@@ -26,6 +26,16 @@ public class StudentController {
     public String homePage(Model model){
         List<Student> studentList = studentService.getAllStudent();
         model.addAttribute("students",studentList);
+        model.addAttribute("searched",false);
+        return "home";
+    }
+
+    @GetMapping("/search")
+    public String searchStudent(@RequestParam(required = false) String keyword ,Model model ){
+        List<Student> studentList = studentService.searchStudent(keyword);
+        model.addAttribute("students",studentList);
+        model.addAttribute("keyword",keyword);
+        model.addAttribute("searched",true);
         return "home";
     }
 

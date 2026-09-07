@@ -12,7 +12,25 @@
   <div class="mt-4">
     <a th:href="@{/students/add}" class="btn btn-primary width-50 rounded"> Add Student </a>
   </div>
-  <table class="table table-bordered table-striped mt-4 table-hover">
+  <form th:action="@{/students/search}" method="get" class="row g-2 mb-4">
+    <div class="col-md-8 mt-4">
+      <input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="Search Student by Name">
+    </div>
+    <div class="col-md-2 mt-4">
+      <button class="btn btn-primary w-100" type="submit">
+        Search
+      </button>
+    </div>
+    <div class="col-md-2 mt-4">
+      <a th:href="@{/students}" class="btn btn-secondary  w-100">Clear</a>
+    </div>
+  </form>
+  <div th:if="${searched and #lists.isEmpty(students)}" class="alert alert-warning">
+        No Student Found .
+  </div>
+
+  <table class="table table-bordered table-striped mt-4 table-hover"
+          th:unless="${#lists.isEmpty(students)}">
     <thead>
     <tr class="table-light">
       <th>Name</th>
