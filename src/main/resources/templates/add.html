@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+    <h1 class="text-center">Add Student</h1>
+    <div class="mt-4 card shadow card-body">
+        <form th:action="@{/students/save}" th:object="${student}" method="post">
+            <div class="mt-4">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Enter Your Name : " th:field="*{name}" required>
+            </div>
+            <div class="mt-4">
+                <label class="form-label">LastName</label>
+                <input type="text" class="form-control" placeholder="Enter Your LastName : " th:field="*{lastName}" required >
+            </div>
+            <div class="mt-4">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" placeholder="Enter your Email :" th:field="*{email}" required>
+            </div>
+            <div class="mt-4">
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-control" placeholder="Enter Your subject : " th:field="*{subject}" required>
+            </div>
+            <div class="mt-4">
+                <label class="form-label">PhoneNo</label>
+                <input type="text" class="form-control" placeholder="Enter Your Phone No : " th:field="*{phoneNo}" required>
+            </div>
+            <div class="mt-4 text-center">
+                <button class="btn btn-primary text-center">Add Student</button>
+                <a th:href="@{/students}" class="btn btn-warning text-center">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

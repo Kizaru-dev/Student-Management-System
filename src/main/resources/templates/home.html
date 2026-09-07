@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home-Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<div class="container mt-4">
+  <h1 class="mt-4 text-white text-center">Student Management System</h1>
+  <div class="mt-4">
+    <a th:href="@{/students/add}" class="btn btn-primary width-50 rounded"> Add Student </a>
+  </div>
+  <table class="table table-bordered table-striped mt-4 table-hover">
+    <thead>
+    <tr class="table-light">
+      <th>Name</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Subject</th>
+      <th>PhoneNo</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+      <td th:text="${student.name}"></td>
+      <td th:text="${student.lastName}"></td>
+      <td th:text="${student.email}"></td>
+      <td th:text="${student.subject}"></td>
+      <td th:text="${student.phoneNo}"></td>
+      <td class="text-center">
+        <a th:href="@{/students/update/{id} (id=${student.id})}" class="btn btn-warning btn-sm text-center">Update</a>
+      </td>
+      <td class="text-center">
+        <a th:href="@{/students/delete/{id} (id=${student.id})}" class="btn btn-danger btn-sm text-center">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
